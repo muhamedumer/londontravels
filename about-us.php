@@ -121,42 +121,7 @@
                 </div><!-- end container -->
             </div><!-- end about-content-2 -->
             
-            <div id="video-banner" class="banner-padding back-size">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <h2>Take a Video Tour</h2>
-                            <p>If you have a heart & it beats for travel than that heartbeat shouldn't be skipped. You should travel down a special pathway where your heart takes you.</p>
-                            <div class="margin-small py-5 mt-5 m-sm-0 "></div>
-                               <!-- Button trigger modal -->
-                                <button type="button" class="btn video-btn" id="play-button" data-toggle="modal" data-src="https://www.youtube.com/embed/VE75g0frvr4" data-target="#myModal"><span><i class="fa fa-play mt-0 m-sm-0"></i></span>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-
-                                      <div class="modal-body">
-
-                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>        
-                                        <!-- 16:9 aspect ratio -->
-
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                          <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always">></iframe>
-                                        </div>
-
-                                      </div>
-
-                                    </div>
-                                  </div>
-                                </div>
-                            </div><!-- end columns -->
-                        </div><!-- end row -->
-                    </div><!-- end container -->
-                </div><!-- end video-banner -->
+            
             
             <div id="why-us" class="innerpage-section-padding">
                 <div class="container">

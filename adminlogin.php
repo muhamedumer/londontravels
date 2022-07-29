@@ -1,6 +1,5 @@
 <!-- Admin login front end -->
 <?php
-session_start();
 if(!isset($_SESSION['userid']))
 {
 ?>
