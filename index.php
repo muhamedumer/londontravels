@@ -36,27 +36,8 @@
     
     <!-- Magnific Gallery -->
     <link rel="stylesheet" href="css/magnific-popup.css">
-  <style>
-  
-    .newsletter{
-        background-color: #dc3545;
-        height: 50px;
-        font-size: larger;
-        
-        margin-top: -88px;
-        padding-top: 10px;
-        margin-bottom: 29px;
-    }
-    .stars {
-    color: #dc3545;
-    font-size: 1.0em;
-    }
-    .nullstars {
-        color:lightgrey;
-    font-size: 1.0em;
-    }
-    
-    </style>
+    <link href="css/mystyle.css" rel="stylesheet">
+
 </head>
 
 
@@ -100,7 +81,7 @@
                         </div><!-- end meta -->
                     </li><!-- end item-2 --> 
                     <li>
-      <video src="images/videoex.mp4" autoplay loop muted width="100%" height="100%" allowFullScreen> </video>
+      <video src="images/videobg.mp4" autoplay loop muted width="100%" height="100%" allowFullScreen> </video>
     </li>
                   
                 </ul>
@@ -124,138 +105,67 @@
                         </div><!-- end page-heading -->
                         
                         <div class="owl-carousel owl-theme owl-custom-arrow" id="owl-hotel-offers">
-                            
+                        <?php
+                                include "dbconn.php";
+                            $sql=mysqli_query($conn,"select * from bestpkg order by id desc;");
+								while($rows = mysqli_fetch_array($sql))
+
+								{ 
+                                    $id=$rows['pkgid'];
+                                    $img1_src = 'images/'.$rows['mainpic'];
+                                    
+                                    $pkgname=$rows['pkgname'];
+                                    $price=$rows['price'];
+                                    $avgrating=$rows['avgrating'];
+ ?>
                             <div class="item">
                                 <div class="main-block hotel-block">
                                     <div class="main-img">
-                                        <a href="#">
-                                            <img src="images/singapoorhotel.jpg" class="img-fluid" alt="hotel-img" />
+                                        <a href="packagedetail.php?id=<?php echo $id; ?>">
+                                            <img src="<?php echo $img1_src; ?>" class="img-fluid" alt="hotel-img" />
                                         </a>
                                         <div class="main-mask">
                                             <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="list-inline-item price">$568.00<span class="divider">|</span><span class="pkg">Avg/Night</span></li>
+                                                <li class="list-inline-item price"><?php echo $price; ?> Rs<span class="divider">|</span></li>
                                                 <li class="list-inline-item rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
+                                               <?php
+                                    $stars = "";
+                                   
+                                    for ($i = 1; $i <= 5; $i++) { 
+                                     if($i <= $avgrating )
+                                    echo "<span class='stars'><i class='fa fa-star'></i></span> ";
+                                    else  echo "<span class='nullstars'><i class='fa fa-star'></i></span> ";
+                                    } 
+                                    ?>
+                                                
+                                                
+                                                
+                                                  
                                                 </li>
+
+
+
                                             </ul>
                                         </div><!-- end main-mask -->
                                     </div><!-- end offer-img -->
                                     
                                     <div class="main-info hotel-info">
                                         <div class="arrow">
-                                            <a href="#"><span><i class="fa fa-angle-right"></i></span></a>
+                                            <a href="packagedetail.php?id=<?php echo $id; ?>"><span><i class="fa fa-angle-right"></i></span></a>
                                         </div><!-- end arrow -->
                                         
                                         <div class="main-title hotel-title">
-                                            <a href="#">Drei Konige Hotel Lucerne</a>
-                                            <p>From: Singapore</p>
+                                            <a href="packagedetail.php?id=<?php echo $id; ?>"><?php echo $pkgname; ?></a>
+
                                         </div><!-- end hotel-title -->
                                     </div><!-- end hotel-info -->
                                 </div><!-- end hotel-block -->
                             </div><!-- end item -->
                             
-                            <div class="item">
-                                <div class="main-block hotel-block">
-                                    <div class="main-img">
-                                        <a href="#">
-                                            <img src="images/malaysiahotel.jpg" class="img-fluid" alt="hotel-img" />
-                                        </a>
-                                        <div class="main-mask">
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="list-inline-item price">$568.00<span class="divider">|</span><span class="pkg">Avg/Night</span></li>
-                                                <li class="list-inline-item rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end main-mask -->
-                                    </div><!-- end offer-img -->
-                                    
-                                    <div class="main-info hotel-info">
-                                        <div class="arrow">
-                                            <a href="#"><span><i class="fa fa-angle-right"></i></span></a>
-                                        </div><!-- end arrow -->
-                                        
-                                        <div class="main-title hotel-title">
-                                            <a href="#">IBIS KL City Centre</a>
-                                            <p>From: Malaysia</p>
-                                        </div><!-- end hotel-title -->
-                                    </div><!-- end hotel-info -->
-                                </div><!-- end hotel-block -->
-                            </div><!-- end item -->
+<?php } ?>
+                          
                             
-                            <div class="item">
-                                <div class="main-block hotel-block">
-                                    <div class="main-img">
-                                        <a href="#">
-                                            <img src="images/dubaihotel.jpg" class="img-fluid" alt="hotel-img" />
-                                        </a>
-                                        <div class="main-mask">
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="list-inline-item price">$568.00<span class="divider">|</span><span class="pkg">Avg/Night</span></li>
-                                                <li class="list-inline-item rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end main-mask -->
-                                    </div><!-- end offer-img -->
-                                    
-                                    <div class="main-info hotel-info">
-                                        <div class="arrow">
-                                            <a href="#"><span><i class="fa fa-angle-right"></i></span></a>
-                                        </div><!-- end arrow -->
-                                        
-                                        <div class="main-title hotel-title">
-                                            <a href="#">Time OAK Hotel &Suites</a>
-                                            <p>From: Dubai</p>
-                                        </div><!-- end hotel-title -->
-                                    </div><!-- end hotel-info -->
-                                </div><!-- end hotel-block -->
-                            </div><!-- end item -->
                             
-                            <div class="item">
-                                <div class="main-block hotel-block">
-                                    <div class="main-img">
-                                        <a href="#">
-                                            <img src="images/thailandhotel.jpg" class="img-fluid" alt="hotel-img" />
-                                        </a>
-                                        <div class="main-mask">
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="list-inline-item price">$568.00<span class="divider">|</span><span class="pkg">Avg/Night</span></li>
-                                                <li class="list-inline-item rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end main-mask -->
-                                    </div><!-- end offer-img -->
-                                    
-                                    <div class="main-info hotel-info">
-                                        <div class="arrow">
-                                            <a href="#"><span><i class="fa fa-angle-right"></i></span></a>
-                                        </div><!-- end arrow -->
-                                        
-                                        <div class="main-title hotel-title">
-                                            <a href="#">grand pick hotel hatyai</a>
-                                            <p>From: Thailand</p>
-                                        </div><!-- end hotel-title -->
-                                    </div><!-- end hotel-info -->
-                                </div><!-- end hotel-block -->
-                            </div><!-- end item -->
                             
                         </div><!-- end owl-hotel-offers -->
                         
@@ -276,7 +186,7 @@
                                     <marquee behavior="scroll" direction="left" scrollamount="20"> 
                                         <?php 	while($rows = mysqli_fetch_array($sql))
 								{ ?>
-                                        <a style="color: black;" href="<?php echo $rows['link']; ?>"><?php echo $rows['news']; ?></a><?php echo "||"; ?>
+                                        <a style="color: black;" href="<?php echo $rows['link']; ?>"><?php echo $rows['news']; ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <?php } ?>
                                     </marquee>
                                 </div>

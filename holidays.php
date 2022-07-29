@@ -27,6 +27,8 @@
     <!-- Owl Carousel Stylesheet -->
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/owl.theme.css">
+    <link href="css/mystyle.css" rel="stylesheet">
+    
 </head>
 
 
@@ -56,272 +58,124 @@
         
         
         <!--===== INNERPAGE-WRAPPER ====-->
+        <?php 
+			include "dbconn.php";
+		?> 
         <section class="innerpage-wrapper">
             <div id="holiday-trips" class="innerpage-section-padding">
                 <div class="container">
                     <div class="row">
                                 <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                            
+                            <?php 
+                            $sql1=mysqli_query($conn,"select * from tblpackage where category='Domestic'");
+                            $res1=mysqli_num_rows($sql1);
+                            $sql2=mysqli_query($conn,"select * from tblpackage where category='International'");
+                            $res2=mysqli_num_rows($sql2);
+                            ?>
                             <div class="trip-block mg-bot-60">
                                 <div class="page-heading trip-heading">
-                                    <h2><span><i class="fa fa-map-marker"></i></span>Kulu-Manali trip</h2>
-                                    <p>120 Holiday Places</p>
+                                    <h2><span><i class="fa fa-map-marker"></i></span>Inside India trip</h2>
+                                    <p><?php echo $res1; ?> Holiday Places</p>
                                 </div><!-- end page-heading -->
                                 
-                                <div class="owl-carousel owl-theme owl-custom-arrow owl-holidays">
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/kulu.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
+                                <div class="row">
+
+<?php
+                            $sql=mysqli_query($conn,"select * from tblpackage where category='Domestic' ORDER BY id DESC;");
+								while($rows = mysqli_fetch_array($sql))
+								{   $id= $rows['id'];
+                                    $img_src = 'images/'.$rows['mainimage'];
+                                     $img_name = $rows['pkgname'];
+                                     $price=$rows['price'];
+                                     $avgrating=$rows['avgrating'];
+                                    ?>
+                        <div class="gallery-product col-lg-4">
+                                        <div class="gallery-block">
+                                            <div class="gallery-img ">
+                                            <a href="packagedetail.php?id=<?php echo $id; ?>"> <img src="<?php echo $img_src; ?>" class="img-fluid" alt="gallery-img" ></a>
+                            
+                                               
+                                            </div><!-- end gallery-img -->
                                             <div class="offer-price-2">
                                                 <ul class="list-unstyled">
-                                                    <li class="price">$568.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
+                                                    <li class="price">Rs <?php echo $price; ?><a href="#" ><span class="arrow"></span></a></li>
                                                 </ul>
                                             </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
+                                            <div class="main-info tour-info pkgTitle">
                                                 <div class="main-title tour-title">
-                                                    <a href="#">Kulu manali Tour</a>
-                                                    
+                                                <a href="packagedetail.php?id=<?php echo $id; ?>"><?php echo $img_name; ?></a>
+                                                   
                                                     <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
+                                                    <?php
+                                    $stars = "";
+                                   
+                                    for ($i = 1; $i <= 5; $i++) { 
+                                     if($i <= $avgrating )
+                                    echo "<span class='stars'><i class='fa fa-star'></i></span> ";
+                                    else  echo "<span class='nullstars'><i class='fa fa-star'></i></span> ";
+                                    } 
+                                    ?>
                                                     </div>
                                                 </div><!-- end tour-title -->
                                             </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/kulu2.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$745.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">manali shimla Tour</a>
-                                                    
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/manali.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$685.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">Manali Mountains</a>
-                                                  
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/shimla.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$533.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">Shimla</a>
-                                                    
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                               </div><!-- end owl-holidays -->
+                                        </div><!-- end gallery-block -->
+                                    </div><!-- end gallery-product -->
+                      
+                                    <?php } ?>
+</div>
                            </div><!-- end trip-block -->
                            
-                           
-                           <div class="trip-block">
+                           <div class="trip-block mg-bot-60">
                                 <div class="page-heading trip-heading">
-                                    <h2><span><i class="fa fa-map-marker"></i></span>Malaysia Trip</h2>
-                                    <p>330 Holiday Places</p>
+                                    <h2><span><i class="fa fa-map-marker"></i></span>International Packages</h2>
+                                    <p><?php echo $res2; ?> Holiday Places</p>
                                 </div><!-- end page-heading -->
                                 
-                                <div class="owl-carousel owl-theme owl-custom-arrow owl-holidays">
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/putra.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
+                                <div class="row">
+
+<?php
+                            $sql=mysqli_query($conn,"select * from tblpackage where category='International' ORDER BY id DESC;");
+								while($rows = mysqli_fetch_array($sql))
+								{   $id= $rows['id'];
+                                    $img_src = 'images/'.$rows['mainimage'];
+                                     $img_name = $rows['pkgname'];
+                                     $price=$rows['price'];
+                                     $avgrating=$rows['avgrating'];
+                                    ?>
+                        <div class="gallery-product col-lg-4">
+                                        <div class="gallery-block">
+                                            <div class="gallery-img ">
+                                            <a href="packagedetail.php?id=<?php echo $id; ?>"> <img src="<?php echo $img_src; ?>" class="img-fluid" alt="gallery-img" ></a>
+                            
+                                               
+                                            </div><!-- end gallery-img -->
                                             <div class="offer-price-2">
                                                 <ul class="list-unstyled">
-                                                    <li class="price">$888.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
+                                                    <li class="price">Rs <?php echo $price; ?><a href="#" ><span class="arrow"></span></a></li>
                                                 </ul>
                                             </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
+                                            <div class="main-info tour-info pkgTitle">
                                                 <div class="main-title tour-title">
-                                                    <a href="#">Putrajaya Mosque</a>
+                                                <a href="packagedetail.php?id=<?php echo $id; ?>"><?php echo $img_name; ?></a>
                                                    
                                                     <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
+                                                    <?php
+                                    $stars = "";
+                                   
+                                    for ($i = 1; $i <= 5; $i++) { 
+                                     if($i <= $avgrating )
+                                    echo "<span class='stars'><i class='fa fa-star'></i></span> ";
+                                    else  echo "<span class='nullstars'><i class='fa fa-star'></i></span> ";
+                                    } 
+                                    ?>
                                                     </div>
                                                 </div><!-- end tour-title -->
                                             </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-        
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/twins.jpeg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$620.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">Malaysia twintowers</a>
-                                                  
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/sing1.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$489.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">Singapoor</a>
-                                                   
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                    <div class="item">
-                                        <div class="main-block tour-block">
-                                            <div class="main-img">
-                                                <a href="#">
-                                                    <img src="images/sing2.jpg" class="img-fluid" alt="tour-img" />
-                                                </a>
-                                            </div><!-- end offer-img -->
-                                            
-                                            <div class="offer-price-2">
-                                                <ul class="list-unstyled">
-                                                    <li class="price">$662.00<a href="#" ><span class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
-                                                </ul>
-                                            </div><!-- end offer-price-2 -->
-                                                
-                                            <div class="main-info tour-info">
-                                                <div class="main-title tour-title">
-                                                    <a href="#">Singapoor</a>
-                                                   
-                                                    <div class="rating">
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star orange"></i></span>
-                                                        <span><i class="fa fa-star grey"></i></span>
-                                                    </div>
-                                                </div><!-- end tour-title -->
-                                            </div><!-- end tour-info -->
-                                        </div><!-- end tour-block -->
-                                    </div><!-- end item -->
-                                    
-                                        </div><!-- end owl-holidays -->
+                                        </div><!-- end gallery-block -->
+                                    </div><!-- end gallery-product -->
+                      
+                                    <?php } ?>
+</div>
                            </div><!-- end trip-block -->
                            
                         </div><!-- end columns -->
@@ -329,61 +183,7 @@
                 </div><!-- end container -->          
             </div><!-- end holidays -->
             
-            <div id="popular-destinations" class="banner-padding">
-                <div class="container">
-                    <div class="big-heading">
-                        <h2>Popular <br/>Destinations<div class="light"></div></h2>                       
-                    </div><!-- end big-heading -->
-                    
-                    <div class="row">
-                        
-                            
-                                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                    </ul>
-                                </div><!-- end columns -->
-                                
-                                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                    </ul>
-                                </div><!-- end columns -->
-                                
-                                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                    </ul>
-                                </div><!-- end columns -->
-                                
-                                <div class="col-md-6 col-lg-3 d-flex justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                        <li><a href="#">Destination Title</a><p>101 Places</p></li>
-                                    </ul>
-                                </div><!-- end columns -->
-                    </div><!-- end row -->
-                </div><!-- end container -->          
-            </div><!-- end holiday-trips -->
+        
                         
         </section><!-- end innerpage-wrapper -->
         
@@ -392,95 +192,9 @@
             include_once("footer.php");
         ?>
 
+      
         
-        <div id="add-card" class="modal custom-modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="modal-title">New Card</h3>
-                    </div><!-- end modal-header -->
-                    
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Card Number</label>
-                                <input type="text" class="form-control" placeholder="XXXX XXXX XXXX XXXX" />
-                            </div><!-- end form-group -->
-                            
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Cardholder Name</label>
-                                        <input  type="text" class="form-control" placeholder="Your Name" />
-                                    </div><!-- end form-group -->
-                                </div><!-- end columns -->
-                                
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Valid Thru</label>
-                                        <input  type="text" class="form-control" placeholder="mm/yy" />
-                                    </div><!-- end form-group -->
-                                </div><!-- end columns -->
-                            </div><!-- end row -->
-                            
-                            <div class="custom-check"><input type="checkbox" id="check01" name="checkbox"/>
-                                 <label for="check01"><span><i class="fa fa-check"></i></span>Set as primary</label>
-                            </div><!-- end checkbox -->
-                            
-                            <button class="btn btn-orange">Add Card</button>
-                        </form>
-                    </div><!-- end modal-bpdy -->
-                </div><!-- end modal-content -->
-            </div><!-- end modal-dialog -->
-        </div><!-- end add-card -->
-        
-        <div id="edit-card" class="modal custom-modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3 class="modal-title">Edit Card</h3>
-                    </div><!-- end modal-header -->
-                    
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Old Card Number</label>
-                                <input type="text" class="form-control" placeholder="XXXX XXXX XXXX 1234" readonly/>
-                            </div><!-- end form-group -->
-                            
-                            <div class="form-group">
-                                <label>New Card Number</label>
-                                <input type="text" class="form-control" placeholder="XXXX XXXX XXXX XXXX" />
-                            </div><!-- end form-group -->
-                            
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label>Cardholder Name</label>
-                                        <input  type="text" class="form-control" placeholder="Your Name" />
-                                    </div><!-- end form-group -->
-                                </div><!-- end columns -->
-                                
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Valid Thru</label>
-                                        <input  type="text" class="form-control" placeholder="mm/yy" />
-                                    </div><!-- end form-group -->
-                                </div><!-- end columns -->
-                            </div><!-- end row -->
-                            
-                            <div class="custom-check"><input type="checkbox" id="check02" name="checkbox"/>
-                                 <label for="check02"><span><i class="fa fa-check"></i></span>Set as primary</label>
-                            </div><!-- end checkbox -->
-                            
-                            <button class="btn btn-orange">Save Changes</button>
-                        </form>
-                    </div><!-- end modal-bpdy -->
-                </div><!-- end modal-content -->
-            </div><!-- end modal-dialog -->
-        </div><!-- end edit-card -->
+     </div><!-- end edit-card -->
     </div>
     
     

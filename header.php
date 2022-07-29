@@ -1,45 +1,19 @@
-<!doctype html>
+<?php
+if(!isset( $_SESSION['pkgid'])){
+session_start();
+}
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Index</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="images/th.jpg" type="image/x-icon">
-    
-    <!-- Google Fonts -->	
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    
-    <!-- Bootstrap Stylesheet -->	
-            <link rel="stylesheet" href="css/bootstrap-4.4.1.min.css">
-    
-
-    <!-- Sidebar Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
-    
-    <!-- Font Awesome Stylesheet -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-        
-    <!-- Custom Stylesheets -->	
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" id="cpswitch" href="css/orange.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-    <!-- Owl Carousel Stylesheet -->
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/owl.theme.css">
-    
-    <!-- Flex Slider Stylesheet -->
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" />
-    
-    <!--Date-Picker Stylesheet-->
-    <link rel="stylesheet" href="css/datepicker.css">
-    
-    <!-- Magnific Gallery -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
-
 <body>
+    
+
 
   
             
@@ -77,13 +51,17 @@
                     </div><!-- end columns -->
                     <div class="col-12 col-md-6">
                         <div id="links">
+                            <?php 
+                           
+                            if(isset($_SESSION['userid']))
+                            {
+                            ?>
                             <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item"><a href="login-1.html"><span><i class="fa fa-lock"></i></span>Login</a></li>
-                                <li class="list-inline-item"><a href="registration-1.html"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
-                                <li class="list-inline-item">
-                                    
-                                </li>
+                                <li class="list-inline-item"><a href=admin/adminhome.php><span><i class="fa fa-home"></i></span>My Account</a></li>
+                               
+                               
                             </ul>
+                           <?php } ?>
                         </div><!-- end links -->
                     </div><!-- end columns -->
                 </div><!-- end row -->
@@ -125,11 +103,21 @@
                         <li class="nav-item">
                             <a href="about-us.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">About_Us</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">Services<span><i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="visa.php">Visa Assistance</a></li>
+                                <li><a class="dropdown-item" href="ticket.php">Air Ticketing</a></li>
+                                <li><a class="dropdown-item" href="otherservice.php">Other Services</a></li>
+                                
+                            </ul>
+                        </li>
+                       
                         <li class="nav-item">
-                            <a href="services.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                            <a href="holidays.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Packages</a>
                         </li>
                         <li class="nav-item">
-                            <a href="holidays.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Holidays</a>
+                            <a href="gallery.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Gallery</a>
                         </li>
                         <li class="nav-item">
                             <a href="contact-us.php" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Contact_Us</a>
