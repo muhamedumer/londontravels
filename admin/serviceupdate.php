@@ -1,7 +1,11 @@
+<!--update services-->
 <?php
+session_start();
+if(isset($_SESSION['userid']))
+{
 if(isset($_REQUEST['Update']))
 {
-    session_start();
+    
     include "../dbconn.php";
 
   //retrieving values from text boxes and dropbox
@@ -12,8 +16,7 @@ if(isset($_REQUEST['Update']))
   $serv5name=$_POST['serv5name']; 
   $serv6name=$_POST['serv6name']; 
   $serv7name=$_POST['serv7name'];  
-  $serv8name=$_POST['serv8name']; 
-  $serv9name=$_POST['serv9name']; 
+ 
 
   $serv1desc=$_POST['serv1desc'];
   $serv2desc=$_POST['serv2desc'];
@@ -22,8 +25,7 @@ if(isset($_REQUEST['Update']))
   $serv5desc=$_POST['serv5desc'];
   $serv6desc=$_POST['serv6desc'];
   $serv7desc=$_POST['serv7desc'];
-  $serv8desc=$_POST['serv8desc'];
-  $serv9desc=$_POST['serv9desc'];
+  
 
   // Attempt update query execution into service table
   $sql="update tblservice set title='$serv1name', descr='$serv1desc' where id='1'";
@@ -40,8 +42,11 @@ if(isset($_REQUEST['Update']))
   mysqli_query($conn, $sql); 
   $sql="update tblservice set title='$serv7name', descr='$serv7desc' where id='7'";
   mysqli_query($conn, $sql); 
-  $sql="update tblservice set title='$serv8name', descr='$serv8desc' where id='8'";
-  mysqli_query($conn, $sql); 
-  $sql="update tblservice set title='$serv9name', descr='$serv9desc' where id='9'";
-  mysqli_query($conn, $sql); 
+ 
 }
+}
+else{
+  
+  echo '<script> alert("ERROR: Please Check Credentials or Sign In!!!"); window.location.href="../index.php"; </script>';
+}
+?>

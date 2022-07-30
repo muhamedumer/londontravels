@@ -1,0 +1,161 @@
+/* indexpage */
+.newsletter{
+    background-color: #dc3545;
+    height: 50px;
+    font-size: larger;
+    
+    margin-top: -88px;
+    padding-top: 10px;
+    margin-bottom: 29px;
+}
+
+
+/*Package details */
+.ratingstar{
+    margin-bottom: 42px;
+margin-left: 80px;
+font-size: 50px;
+}
+.ratingstars {
+color: #dc3545;
+font-size: 40px;
+}
+.commentbox{
+    border-color: black;
+margin-top: 20px;
+border: 1px solid #e6e7e8;
+padding-left: 30px;
+padding-top: 10px;
+padding-bottom: 10px;
+
+}
+/* indexpage, package details, review*/
+.stars {
+color: #dc3545;
+font-size: 1.0em;
+}
+/* indexpage, package details */
+.nullstars {
+    color:lightgrey;
+font-size: 1.0em;
+}
+
+/*Review */
+@media (min-width: 300px) and (max-width: 400px)
+{
+.reviewbox{
+    max-width: 100px;
+}
+}
+@media (min-width: 401px) and (max-width:475px){
+.reviewbox{
+    max-width: 145px;
+}
+}
+@media (min-width: 476px) and (max-width:550px){
+.reviewbox{
+    max-width: 220px;
+}
+}
+@media (min-width: 551px) and (max-width:650px){
+.reviewbox{
+    max-width: 250px;
+}
+}
+
+
+@media (min-width: 651px) and (max-width:800px){
+.reviewbox{
+    max-width: 320px;
+}
+}
+@media (min-width: 801px) and (max-width:1280px){
+.reviewbox{
+    max-width: 450px;
+}
+}
+@media (min-width: 1281px)and (max-width:1600px){
+.reviewbox{
+    max-width: 600px;
+}
+}
+@media (min-width: 1601px){
+.reviewbox{
+    max-width: 800px;
+}
+}
+/* Best review */
+@media (min-width: 250px) and (max-width: 355px)
+    {
+    .review{
+        max-width: 100px;
+    }
+}
+@media (min-width: 360px) and (max-width:379px){
+    .review{
+        max-width: 200px;
+    }
+}
+@media (min-width: 380px) and (max-width:400px){
+    .review{
+        max-width: 220px;
+    }
+}
+@media (min-width: 401px) and (max-width:450px){
+    .review{
+        max-width: 250px;
+    }
+}
+@media (min-width: 451px) and (max-width:500px){
+    .review{
+        max-width: 291px;
+    }
+}
+@media (min-width: 500px) and (max-width:605px){
+    .review{
+        max-width: 350px;
+    }
+}
+@media (min-width: 606px) and (max-width:800px){
+    .review{
+        max-width: 420px;
+    }
+}
+@media (min-width: 801px) and (max-width:1280px){
+    .review{
+        max-width: 550px;
+    }
+}
+@media (min-width: 1281px)and (max-width:1600px){
+    .review{
+        max-width: 750px;
+    }
+}
+@media (min-width: 1601px){
+    .review{
+        max-width: 900px;
+    }
+}
+
+/*package */
+.pkgtitle{
+    font:bold;
+font-size: 20px;
+}
+ .pkgTitle{
+    background: #f8f8f8;
+    border: 1px solid #e6e7e8;
+}
+/*service */
+#search-banner .form-group input{
+    padding-left: 30px;
+
+}
+#search-banner .form-group textarea{
+    padding-left: 30px;
+
+}
+ /*Visa services */
+ .visa-detail{
+    margin: 0px 0px;
+ }

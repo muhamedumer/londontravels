@@ -2423,7 +2423,7 @@ nav.navbar#mynavbar-3 .navbar-brand .fa
 }
 
 #cover-tour-detail{
-	background:url('../images/cover-tour-detail.jpg') 50% 56%;
+	background:url('../images/bridge.png') 50% 56%;
 	background-size:140%;
 	color:white;
 }
@@ -2479,7 +2479,7 @@ nav.navbar#mynavbar-3 .navbar-brand .fa
 /********* COVER GALLERY PAGES **********/
 
 #cover-gallery{
-	background:url('../images/cover-gallery.jpg') 50% 60%;
+	background:url('../images/cover-gallery.png') 50% 60%;
 	background-size:cover;
 }
 

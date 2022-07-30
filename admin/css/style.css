@@ -1907,6 +1907,7 @@ body {
 }
 
 .dashbaord .box .dashboard-boxes {
+  margin-top: 50px;
   border-radius: 7px;
   color: #f2f2f2;
   text-align: center;
