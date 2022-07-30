@@ -4,7 +4,8 @@
     include('../dbconn.php');  
     
     $username = $_POST['user'];  
-    
+   $user=$username;  
+           
     $password = $_POST['pass'];  
       
         //to prevent from mysqli injection  
@@ -23,8 +24,7 @@
         if($count == 1){  
             session_start();
            
-            $_SESSION['userid']=$username;  
-           
+            $_SESSION['userid']=$user;  
             header("Location:adminhome.php");
 exit();
             
