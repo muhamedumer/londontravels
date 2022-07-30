@@ -42,6 +42,38 @@ include "dbconn.php";
 	});
     console.log(data);
 }
+
+function validateForm() {
+
+var login=document.getElementById("submit");
+var emailID = document.f1.txt_email.value;
+       atpos = emailID.indexOf("@");
+       dotpos = emailID.lastIndexOf(".");
+       var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+       
+     
+
+       
+   if (atpos < 1 || ( dotpos - atpos < 2 )) {
+          alert("Please enter correct email ID")
+          document.myForm.busemail.focus() ;
+          return false;
+       }
+       
+else  if(!document.f1.txt_phone.value.match(phoneno))
+   {
+  alert("Not a valid phone no!");
+     return false;
+ }
+ 
+ else{
+  login.disabled=true;
+  login.textContent="Your message is sending!!"
+   return true;
+ }
+
+}
+
         </script>
 </head>
 
@@ -188,28 +220,29 @@ include "dbconn.php";
                                 <h3>Contact Us</h3>
                                 <p>Find your dream tour today</p>
                                 
-                                <form name="f1" action="visa.php" method = "POST" enctype="multipart/form-data">   
+                                <form name="f1" onsubmit="return validateForm()" action="visa.php" 
+                                 method = "POST" enctype="multipart/form-data">   
                                   
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name" id="txt_name" name="txt_name"/>
+                                            <input type="text" class="form-control" placeholder="Your Name" id="txt_name" name="txt_name" required/>
                                         </div>
                                         
 
                                         
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email"  id="txt_email" name="txt_email"/>
+                                            <input type="email" class="form-control" placeholder="Email"  id="txt_email" name="txt_email" required/>
                                         </div>
                                         <div class="form-group">
-                                     <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_phone"/>
+                                     <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_subject" required/>
                                    
                                 </div>
                                 
                                 <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Phone"  id="txt_phone" name="txt_phone"/>
+                                <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" placeholder="Phone"  id="txt_phone" name="txt_phone" required/>
                                            
                                         </div> 
                                         <div class="form-group">
-                                    <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message"></textarea>
+                                    <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message" required></textarea>
                                     
                                 </div>
                                         
@@ -217,7 +250,7 @@ include "dbconn.php";
                                             
                                        
                                         <div class="col-md-12 text-center" id="result_msg"></div>
-                                        <button class="btn btn-block btn-orange" id="submit" name="emailsubmit">Submit</button>
+                                        <button type="submit" class="btn btn-block btn-orange" id="submit" name="emailsubmit">Submit</button>
                                     </form>
     
                             </div><!-- end booking-form -->

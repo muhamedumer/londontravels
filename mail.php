@@ -1,4 +1,5 @@
 <?php
+include "dbconn.php";
 session_start();
 $id=$_SESSION['pkgid'];
 use PHPMailer\PHPMailer\PHPMailer;
@@ -19,8 +20,9 @@ $message=$_POST["txt_message"];
 $msg=$message;
 
 $telephone=$_POST["txt_phone"];
-$message .= "\n";
-$message .= "Telephone: ".$telephone."\n";
+$message.="</br>";
+$message .= "Telephone: ".$telephone."</br>";
+
 $category="package";
 date_default_timezone_set('Asia/kolkata');    
 $date=date("Y-m-d");

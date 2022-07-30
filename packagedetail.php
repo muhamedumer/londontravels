@@ -1,3 +1,4 @@
+
 <?php
 session_start();
   $pkgid=$_GET['id'];
@@ -20,7 +21,7 @@ $url.= $_SERVER['REQUEST_URI'];
     <title>Package details</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="images/th.jpg" type="image/x-icon">
@@ -55,8 +56,9 @@ $url.= $_SERVER['REQUEST_URI'];
     <link href="css/mystyle.css" rel="stylesheet">
    
     <link href='js/jquery-bar-rating-master/dist/themes/fontawesome-stars.css' rel='stylesheet' type='text/css'>
+
     <script src="js/jquery-bar-rating-master/dist/jquery.barrating.min.js" type="text/javascript"></script>
-   
+    
     <script type="text/javascript">
         $(function() {
             $('.rating').barrating({
@@ -135,6 +137,12 @@ else
      
                 });
             });
+
+
+            
+
+
+
      </script>
 
 </head>
@@ -398,37 +406,34 @@ $(document).ready(function(){
                                 <div class="booking-form">
                                     <h3>Contact Us</h3>
                                     <p>Find your dream tour today</p>
-                                    <form name="f1" action="mail.php" method = "POST" enctype="multipart/form-data">   
-                                  
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name" id="txt_name" name="txt_name"/>
-                                        </div>
-                                        
-
-                                        
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email"  id="txt_email" name="txt_email"/>
-                                        </div>
-                                        <div class="form-group">
-                                     <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_phone"/>
-                                   
-                                </div>
-                                
-                                <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Phone"  id="txt_phone" name="txt_phone"/>
-                                           
-                                        </div> 
-                                        <div class="form-group">
-                                    <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message"></textarea>
+                                    <form name="f1" onsubmit="return validateForm()" action="mail.php" method="POST" enctype="multipart/form-data">   
+                           
                                     
-                                </div>
-                                        
-                                            
-                                            
-                                       
-                                        <div class="col-md-12 text-center" id="result_msg"></div>
-                                        <button class="btn btn-block btn-orange" id="submit" name="emailsubmit">Submit</button>
-                                    </form>
+                           <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name"  name="txt_name" id="txt_name" required/>
+                                <span><i class="fa fa-user"></i></span>
+                           </div>
+   
+                           <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email"  name="txt_email" id="email" required/>
+                                <span><i class="fa fa-envelope"></i></span>
+                           </div>
+                           
+                           <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_subject" required/>
+                                <span><i class="fa fa-question"></i></span>
+                           </div>
+                           <div class="form-group">
+                                       <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" placeholder="Phone"  id="phone" name="txt_phone" required/>
+                                       <span><i class="fa fa-phone"></i></span>
+                                   </div>      
+                           <div class="form-group">
+                               <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message" required></textarea>
+                               <span><i class="fa fa-pencil"></i></span>
+                           </div>
+                                   <div class="col-md-12 text-center" id="result_msg"></div>
+                           <button type="submit" name="emailsubmit" id="submit" class="btn btn-orange btn-block">Send</button>
+                       </form>
                                    
                                 </div><!-- end booking-form -->
                             </div><!-- end side-bar-block -->
@@ -481,8 +486,11 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
+
+
 </script>
-    
+
+
     <link rel="stylesheet" href="wpm/floating-wpp.min.css">  
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>

@@ -23,6 +23,39 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" id="cpswitch" href="css/orange.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <script>
+            function validateForm() {
+
+var login=document.getElementById("submit");
+var emailID = document.f1.email.value;
+       atpos = emailID.indexOf("@");
+       dotpos = emailID.lastIndexOf(".");
+       var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+       
+     
+
+       
+   if (atpos < 1 || ( dotpos - atpos < 2 )) {
+          alert("Please enter correct email ID")
+          document.myForm.busemail.focus() ;
+          return false;
+       }
+       
+else  if(!document.f1.phone.value.match(phoneno))
+   {
+  alert("Not a valid phone no!");
+     return false;
+ }
+ 
+ else{
+  login.disabled=true;
+  login.textContent="Your message is sending!!"
+   return true;
+ }
+
+}
+
+</script>
     </head>
     
     
@@ -61,33 +94,33 @@
                         <div class="custom-form contact-form">
                             <h3>Contact Us</h3>
                             <p>Feel free to ask us any questions, suggessions and comments.</p>
-                            <form name="f1" action = "contact-us.php" method = "POST" enctype="multipart/form-data">   
+                            <form name="f1" onsubmit="return validateForm()" action = "contact-us.php" method = "POST" enctype="multipart/form-data">   
                            
                                     
                                 <div class="form-group">
-                                     <input type="text" class="form-control" placeholder="Name"  name="txt_name" id="txt_name"/>
+                                     <input type="text" class="form-control" placeholder="Name"  name="txt_name" id="txt_name" required/>
                                      <span><i class="fa fa-user"></i></span>
                                 </div>
         
                                 <div class="form-group">
-                                     <input type="email" class="form-control" placeholder="Email"  name="txt_email" id="txt_email"/>
+                                     <input type="email" class="form-control" placeholder="Email"  name="txt_email" id="email" required/>
                                      <span><i class="fa fa-envelope"></i></span>
                                 </div>
                                 
                                 <div class="form-group">
-                                     <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_phone"/>
+                                     <input type="text" class="form-control" placeholder="Subject" name="txt_subject" id="txt_subject" required/>
                                      <span><i class="fa fa-question"></i></span>
                                 </div>
                                 <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Phone"  id="txt_phone" name="txt_phone"/>
+                                <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" placeholder="Phone"  id="phone" name="txt_phone" required/>
                                             <span><i class="fa fa-phone"></i></span>
                                         </div>      
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message"></textarea>
+                                    <textarea class="form-control" rows="4" placeholder="Your Message" name="txt_message" id="txt_message" required></textarea>
                                     <span><i class="fa fa-pencil"></i></span>
                                 </div>
                                         <div class="col-md-12 text-center" id="result_msg"></div>
-                                <button name="emailsubmit" id="submit" class="btn btn-orange btn-block">Send</button>
+                                <button type="submit" name="emailsubmit" id="submit" class="btn btn-orange btn-block">Send</button>
                             </form>
                         </div><!-- end contact-form -->
                     </div><!-- end columns -->
@@ -146,7 +179,8 @@ $sendermail=$_POST["txt_email"];
 $message=$_POST["txt_message"];
 $msg=$message;
 $telephone=$_POST["txt_phone"];
-$message .= "Telephone: ".$telephone."\n";
+$message.="</br>";
+$message .= "Telephone: ".$telephone."</br>";
 
 $category="contact page";
 date_default_timezone_set('Asia/kolkata');    
@@ -177,7 +211,7 @@ try {
     // Setting the email content
     $mail->IsHTML(true);
     $mail->Subject = $subject;
-    $mail->Body = $msg;
+    $mail->Body = $message;
     $mail->AltBody = 'Plain text message body for non-HTML email client. Gmail SMTP email body.';
 
     $mail->send();

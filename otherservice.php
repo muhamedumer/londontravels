@@ -24,6 +24,39 @@
     <link rel="stylesheet" id="cpswitch" href="css/orange.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link href="css/mystyle.css" rel="stylesheet">
+    <script>
+            function validateForm() {
+
+var login=document.getElementById("submit");
+var emailID = document.f1.txt_email.value;
+       atpos = emailID.indexOf("@");
+       dotpos = emailID.lastIndexOf(".");
+       var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+       
+     
+
+       
+   if (atpos < 1 || ( dotpos - atpos < 2 )) {
+          alert("Please enter correct email ID")
+          document.myForm.busemail.focus() ;
+          return false;
+       }
+       
+else  if(!document.f1.txt_phone.value.match(phoneno))
+   {
+  alert("Not a valid phone no!");
+     return false;
+ }
+ 
+ else{
+  login.disabled=true;
+  login.textContent="Your message is sending!!"
+   return true;
+ }
+
+}
+
+</script>
 </head>
 
 
@@ -100,14 +133,14 @@
                             <p>A perfect place for searching your</p>
                             <h2>Desired Tour & Flight</h2>
                             <p>London tours and travel has expertise of 10+ years in the Tourism Industry. we stay in line with travel trends & connect consumers, businesses worldwide.</p>
-                            <a href="#" class="btn btn-black btn-lg">Search Now</a>
+                            
                         </div><!-- end columns -->
                         <div class="col-12 col-md-12 col-lg-7 col-xl-7">
                         <div class="page-heading white-heading">
                         	<h2>Contact Us</h2>
                             <hr class="heading-line" />
                         </div><!-- end page-heading -->
-                        <form name="f1" action = "otherservice.php" method = "POST" enctype="multipart/form-data">   
+                        <form name="f1"  onsubmit="return validateForm()" action = "otherservice.php"  method = "POST" enctype="multipart/form-data">   
                                 	<div class="row"> 
                                     	<div class="col-12 col-md-6"> 
                                             <div class="form-group">
@@ -118,14 +151,14 @@
                                        
                                         <div class="col-12 col-md-6"> 
                                             <div class="form-group">
-                                                 <input type="text" class="form-control" placeholder="Phone Number" name="txt_phone"  required/>
+                                            <input type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" class="form-control" placeholder="Phone Number" name="txt_phone" id="txt_phone" required/>
                                                 
                                             </div>
         								</div>
                                     </div>
                                     
                                     <div class="form-group">
-                                         <input type="email" class="form-control" placeholder="Email"  name="txt_email" required/>
+                                         <input type="email" class="form-control" placeholder="Email"  name="txt_email" id="txt_email" required/>
                                       
                                     </div>
                                         
@@ -135,11 +168,11 @@
                                     </div>
     
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="7" placeholder="Your Message" name="txt_message"></textarea>
+                                        <textarea class="form-control" rows="7" placeholder="Your Message" name="txt_message" required></textarea>
                                         
                                     </div>
     								
-                                    <button name="emailsubmit" id="submit" class="btn btn-orange btn-block">Send</button>
+                                    <button type="submit" name="emailsubmit" id="submit" class="btn btn-orange btn-block">Send</button>
                                 </form>
                             </div><!-- end columns -->
                     </div><!-- end row -->
@@ -189,7 +222,9 @@ $sendermail=$_POST["txt_email"];
 $message=$_POST["txt_message"];
 $msg=$message;
 $telephone=$_POST["txt_phone"];
-$message .= "Telephone: ".$telephone."\n";
+$message.="</br>";
+$message .= "Telephone: ".$telephone."</br>";
+
 $category="services";
 date_default_timezone_set('Asia/kolkata');    
 $date=date("Y-m-d");
