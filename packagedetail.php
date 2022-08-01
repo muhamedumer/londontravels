@@ -197,13 +197,14 @@ else
                                     $img3_src = 'images/'.$rows['img3'];
                                     $img4_src = 'images/'.$rows['img4'];
                                     $img5_src = 'images/'.$rows['img5']; 
+                                    $pdffile='images/'.$rows['pdf'];
                                     $pkgname=$rows['pkgname'];
                                     $price=$rows['price'];
                                     $seats=$rows['seats'];
                                     $days=$rows['duration'];
                                     $offer=$rows['offer'];
                                     $details=$rows['descr'];
-
+                                    
                                      } ?>
                                     <div><img src="<?php echo $img1_src; ?>" class="img-fluid" alt="feature-img"/></div>
                                     <div><img src="<?php echo $img2_src; ?>" class="img-fluid" alt="feature-img"/></div>
@@ -249,6 +250,7 @@ else
                                                 <p>
                                                 <?php echo $details; ?> 
                                                 </p>
+                                                <a href="<?php echo $pdffile; ?>" target="_blank">View More </a>
                                             </div><!-- end columns -->
                                         </div><!-- end row -->
                                     </div><!-- end hotel-overview -->
@@ -258,10 +260,17 @@ else
                                             <div class="col-md-4 col-lg-4 tab-img">
                                                 <img src="images/dubai.jpg" class="img-fluid" alt="flight-detail-img" />
                                             </div><!-- end columns -->
-                                            
+                                            <?php
+                                            $sql=mysqli_query($conn,"select * from tblterms where id=1;");
+								while($rows = mysqli_fetch_array($sql))
+								{
+                                    $terms=$rows['terms'];
+                                    $cancel=$rows['cancelpolicy'];
+                                }
+                                ?>
                                             <div class="col-md-8 col-lg-8 tab-text">
                                                 <h3>Terms and Conditions</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                                <p><?php echo $terms; ?></p>
                                             </div><!-- end columns -->
                                         </div><!-- end row -->
                                     </div><!-- end restaurant -->
@@ -274,7 +283,7 @@ else
                                             
                                             <div class="col-md-8 col-lg-8 tab-text">
                                                 <h3>Cancellation Policy</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                                <p><?php echo $cancel; ?></p>
                                             </div><!-- end columns -->
                                         </div><!-- end row -->
                                     </div><!-- end pick-up -->

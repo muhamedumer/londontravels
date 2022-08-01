@@ -27,7 +27,18 @@
     
     <!-- Magnific Gallery -->
     <link rel="stylesheet" href="css/magnific-popup.css">
-
+<style>
+     .delete-link{
+    position: absolute;
+    top: 20px;
+    right: 62px;
+    font-size: 27px;
+    line-height: 0;
+  
+    transition: .4s;
+    color: #dc3545;
+     }
+    </style>
 
     
 
@@ -114,6 +125,12 @@
                                                             <h2><?php echo $img_name; ?></h2>
                                                            
                                                         </div>  <!-- end gallery-title --> 
+                                                        <?php
+                                                        session_start();
+                                                        if(isset($_SESSION['userid']))
+                                                        { ?>
+                                                        <a href="deleteimg.php?id=<?php echo $postID; ?>" title="Delete image" class="with-caption delete-link"><span><i class="fa fa-trash"></i></span></a>
+                                                       <?php }?>
                                                     <a href="<?php echo $img_src; ?>" title="Swipe right" class="with-caption image-link"><span><i class="fa fa-arrows-v"></i></span></a>
                                                     
                                                 </div><!-- end gallery-mask -->
@@ -142,9 +159,12 @@
 <source src="<?php echo $vid_src; ?>">
 </video>
 
-                                                    
+<?php                                                    
                                                
-                                               
+if(isset($_SESSION['userid']))
+                                                        { ?>
+                                                        <a href="deletevid.php?id=<?php echo $postID; ?>" title="Delete" class="with-caption delete-link"><span><i class="fa fa-trash"></i></span></a>
+                                                       <?php }?>   
                                             </div><!-- end gallery-img -->
                                         </div><!-- end gallery-block -->
                                     </div><!-- end gallery-product -->
